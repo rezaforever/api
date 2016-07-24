@@ -228,6 +228,7 @@ function create_config( )
     "invite",
     "all",
     "leave_ban",
+    "plugins",
 	"supergroup",
 	"whitelist",
 	"msg_checks"
@@ -301,6 +302,21 @@ Promote user to support
 
 !-support
 Demote user from support
+
+!setabout
+set descreption for supergroup
+
+!setbye
+set bye message for group
+
+!delbye
+delete bye message for group
+
+!setwlc
+set welcome message
+
+!delwlc
+delete welcome message
 
 !log
 Get a logfile of current group or realm
