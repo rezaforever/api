@@ -239,7 +239,7 @@ function create_config( )
 An antisapm lua bot based on Telegram
 
 Bot Id
-@ViVo_Tg 
+@ViVoTg 
 Sudo Id
 @RezaMnk
 ]],
