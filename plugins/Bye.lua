@@ -8,7 +8,7 @@ local group_bye = redis:hget(hash,'bye')
 if matches[1] == 'delbye' and not matches[2] and is_owner(msg) then 
     
    redis:hdel(hash,'delbye')
-        return 'Bye message deleted
+        return 'Bye message deleted'
 end
 
 local url , res = http.request('http://api.gpmod.ir/time/')
@@ -45,7 +45,3 @@ return {
   run = run
 }
 end
-
---Channel : @TGland --
---IT Channel: @ITTGland --
---کپی بدون منبع حرام است--
