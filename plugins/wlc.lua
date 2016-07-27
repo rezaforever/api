@@ -59,7 +59,7 @@ local function description_rules(msg, nama)
          rules = "\n› Gp rules :\n"..rules.."\n"
       end
        local sambutan = "Hi "..nama.."\nWelcome to group "..string.gsub(msg.to.print_name, "_", " ").."\nYou can get help list with /help command.\n"
-      local text = sambutan..about..rules.."\n"
+      local text = sambutan..about..rules.."\n\nOur channel @ViVo_Channel"
       local receiver = get_receiver(msg)
       send_large_msg(receiver, text, ok_cb, false)
    end
