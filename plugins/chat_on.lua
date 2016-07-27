@@ -38,11 +38,11 @@ do
 
   local function run(msg, matches)
           — Enable a channel
-          if matches[1] == '+' then
+          if matches[1] == 'enable' then
                   return enable_channel(get_receiver(msg))
           end
           — Disable a channel
-          if matches[1] == '-' then
+          if matches[1] == 'disable' then
             if not _config.disabled_channels then
                     _config.disabled_channels = {}
             end
@@ -56,13 +56,13 @@ do
           description = 'Plugin to manage channels. Enable or disable channel.',
           usage = {
       moderator = {
-                    ' !channel +: enable current channel',
-                    ' !channel -: disable current channel'
+                    ' !channel enable: enable current channel',
+                    ' !channel disable: disable current channel'
       },
     },
           patterns = {
-                  "^[!/]channel (+)$",
-                  "^[!/]channel (-)$"
+                  "^!channel (enable)$",
+                  "^!channel (disable)$"
     },
           run = run,
     moderated = true,
