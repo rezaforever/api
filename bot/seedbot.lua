@@ -51,11 +51,11 @@ function on_binlog_replay_end()
 end
 
 function msg_valid(msg)
-  -- Don't process outgoing messages
-  if msg.out then
-    print('\27[36mNot valid: msg from us\27[39m')
-    return false
-  end
+   --Don't process outgoing messages
+  --if msg.out then
+    --print('\27[36mNot valid: msg from us\27[39m')
+    --return false
+  --end
 
   -- Before bot was started
   if msg.date < os.time() - 5 then
@@ -78,10 +78,10 @@ function msg_valid(msg)
     return false
   end
 
-  if msg.from.id == our_id then
-    print('\27[36mNot valid: Msg from our id\27[39m')
-    return false
-  end
+  --if msg.from.id == our_id then
+    --print('\27[36mNot valid: Msg from our id\27[39m')
+    --return false
+  --end
 
   if msg.to.type == 'encr_chat' then
     print('\27[36mNot valid: Encrypted chat\27[39m')
@@ -229,6 +229,24 @@ function create_config( )
     "all",
     "leave_ban",
     "plugins",
+    "sms",
+    "about",
+    "autoleave",
+    "bb",
+    "chat_on",
+    "feedback",
+    "filter",
+    "expire",
+    "gpreq",
+    "keep_calm",
+    "lock_bot",
+    "lock_forward,
+    "savefiles",
+    "send",
+    "support",
+    "svinfo",
+    "text_to_st",
+    "
 	"supergroup",
 	"whitelist",
 	"msg_checks"
