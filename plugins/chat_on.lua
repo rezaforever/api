@@ -24,7 +24,7 @@ do
   end
 
   local function pre_process(msg)
-          — If sender is a moderator then re-enable the channel
+          --If sender is a moderator then re-enable the channel
           if is_mod(msg) then
             if msg.text == '!channel enable' then
               enable_channel(get_receiver(msg))
@@ -37,11 +37,11 @@ do
   end
 
   local function run(msg, matches)
-          — Enable a channel
+          -- Enable a channel
           if matches[1] == 'enable' then
                   return enable_channel(get_receiver(msg))
           end
-          — Disable a channel
+          -- Disable a channel
           if matches[1] == 'disable' then
             if not _config.disabled_channels then
                     _config.disabled_channels = {}
