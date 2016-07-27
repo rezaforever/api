@@ -1,6 +1,6 @@
 do
 
-  — Checks if bot was disabled on specific chat
+  —-Checks if bot was disabled on specific chat
   local function is_channel_disabled(receiver)
           if not _config.disabled_channels then
                   return false
