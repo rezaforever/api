@@ -240,13 +240,12 @@ function create_config( )
     "gpreq",
     "keep_calm",
     "lock_bot",
-    "lock_forward,
+    "lock_forward",
     "savefiles",
     "send",
     "support",
     "svinfo",
     "text_to_st",
-    "
 	"supergroup",
 	"whitelist",
 	"msg_checks"
