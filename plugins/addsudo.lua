@@ -10,6 +10,7 @@ end
      save_config()
      reload_plugins(true)
       return matches[2]..' added to sudo users'
+      end
    end
 end
 return {
@@ -18,3 +19,4 @@ patterns = {
 },
 run = run
 }
+    
