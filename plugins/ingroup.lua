@@ -852,11 +852,6 @@ local function callback_mute_res(extra, success, result)
 	end
 end
 
-local function help()
-  local help_text = tostring(_config.help_text)
-  return help_text
-end
-
 local function cleanmember(cb_extra, success, result)
   local receiver = cb_extra.receiver
   local chat_id = "chat#id"..result.id
@@ -1675,12 +1670,12 @@ if msg.to.type == 'chat' then
         return 'This is a group'
      end
    end
-    if matches[1] == 'help' then
+    if matches[1] == '.' then
       if not is_momod(msg) or is_realm(msg) then
         return
       end
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used /help")
-      return help()
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used .")
+      return .()
     end
     if matches[1] == 'res' then 
       local cbres_extra = {
