@@ -1670,12 +1670,12 @@ if msg.to.type == 'chat' then
         return 'This is a group'
      end
    end
-    if matches[1] == '.' then
+    if matches[1] == 'Jjjj' then
       if not is_momod(msg) or is_realm(msg) then
         return
       end
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used .")
-      return .()
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used Jjjj")
+      return Jjjj()
     end
     if matches[1] == 'res' then 
       local cbres_extra = {
