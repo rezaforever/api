@@ -1,5 +1,5 @@
 local function run(msg, matches)
- if matches[1] == 'sms' and is(msg) then
+ if matches[1] == 'sms' then
   local response = matches[3]
   send_large_msg("user#id"..matches[2], response)
       local receiver = 'user#id'..user_id
