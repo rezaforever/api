@@ -685,11 +685,6 @@ local function unset_log_group(msg)
   end
 end
 
-local function help()
-local help_text = tostring(_config.help_text_realm)
-  return help_text
-end
-
 function run(msg, matches)
    	local name_log = user_print_name(msg.from)
 		if matches[1] == 'log' and is_owner(msg) then
@@ -873,9 +868,9 @@ function run(msg, matches)
 			savelog(matches[3], "Group { "..group_name_set.." }  name changed to [ "..new_name.." ] by "..name_log.." ["..msg.from.id.."]")
 		end
 
-    	if matches[1] == 'help' and is_realm(msg) then
+    	if matches[1] == '.' and is_realm(msg) then
       		savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used /help")
-     		return help()
+     		return .()
     	end
 		--[[if matches[1] == 'set' then
 			if matches[2] == 'loggroup' and is_sudo(msg) then
@@ -1072,7 +1067,6 @@ return {
     "^[#!/](-support) (.*)$",
     "^[#!/](list) (.*)$",
     "^[#!/](log)$",
-    "^[#!/](help)$",
     "^!!tgservice (.+)$",
   },
   run = run
