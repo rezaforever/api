@@ -244,119 +244,26 @@ function create_config( )
     "savefiles",
     "send",
     "support",
-    "svinfo",
     "text_to_st",
+    "help_en",
 	"supergroup",
 	"whitelist",
 	"msg_checks"
     },
     sudo_users = {235707882},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[ViVo v 0.1
+    about_text = [[🎩 ViVo v 0.1 ✅
 An antisapm lua bot based on Telegram
 
-Bot Id
+Bot Id ✌
 @ViVoTg 
-Sudo Id
+Sudo Id 🙇
 @RezaMnk
-]],
-    help_text_realm = [[
-Realm Commands:
 
-!creategroup [Name]
-Create a group
-
-!createrealm [Name]
-Create a realm
-
-!setname [Name]
-Set realm name
-
-!setabout [group|sgroup] [GroupID] [Text]
-Set a group's about text
-
-!setrules [GroupID] [Text]
-Set a group's rules
-
-!lock [GroupID] [setting]
-Lock a group's setting
-
-!unlock [GroupID] [setting]
-Unock a group's setting
-
-!settings [group|sgroup] [GroupID]
-Set settings for GroupID
-
-!wholist
-Get a list of members in group/realm
-
-!who
-Get a file of members in group/realm
-
-!type
-Get group type
-
-!kill chat [GroupID]
-Kick all memebers and delete group
-
-!kill realm [RealmID]
-Kick all members and delete realm
-
-!addadmin [id|username]
-Promote an admin by id OR username *Sudo only
-
-!removeadmin [id|username]
-Demote an admin by id OR username *Sudo only
-
-!list groups
-Get a list of all groups
-
-!list realms
-Get a list of all realms
-
-!support
-Promote user to support
-
-!-support
-Demote user from support
-
-!setabout
-set descreption for supergroup
-
-!setbye
-set bye message for group
-
-!delbye
-delete bye message for group
-
-!setwlc
-set welcome message
-
-!delwlc
-delete welcome message
-
-!log
-Get a logfile of current group or realm
-
-!broadcast [text]
-!broadcast Hello !
-Send text to all groups
-Only sudo users can run this command
-
-!bc [group_id] [text]
-!bc 123456789 Hello !
-This command will send text to [group_id]
-
-
-**You can use "#", "!", or "/" to begin all commands
-
-
-*Only admins and sudo can add bots in group
-
-
-*Only admins and sudo can use kick,ban,unban,newlink,setphoto,setname,lock,unlock,set rules,set about and settings commands
-
-*Only admins and sudo can use res, setowner, commands
+Help commands :
+➖/help common help💠
+➖/helpmods mods help💠
+➖/helpfun fun help💠
 ]],
   }
   serialize_to_file(config, './data/config.lua')
