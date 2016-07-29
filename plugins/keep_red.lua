@@ -17,7 +17,7 @@ return {
     "/keep calm font text: Ø³Ø§Ø®Øª Ù„ÙˆÚ¯Ùˆ",
   },
   patterns = {
-   "^[/!]([Kk][Ee][Ee][Pp] [Rr][Ee][Dd]) (.+) (.+) (.+)$",
+   "^[/!]([Kk][Ee][Ee][Pp] [Cc][Aa][Ll][Mm]) (.+) (.+) (.+)$",
   },
   run = run
 }
