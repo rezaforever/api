@@ -27,7 +27,7 @@ local c = colors[math.random(#colors)]
 
 local url = answers[math.random(#answers)]..jdat.ENtime.."&txtsize=200&txtclr="..c.."&txtalign=middle,center&txtfont="..f.."%20Condensed%20Medium&mono=ff6598cc=?markscale=60&markalign=center%2Cdown&mark64=QFVCX0NICg"
 local file = download_to_file(url,'time.webp')
-send_document(get_receiver(msg) , file, ok_cb, false)
+send_document(get_receiver(msg), file, ok_cb, false)
 end
 return {
   patterns = {
