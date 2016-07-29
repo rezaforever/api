@@ -156,7 +156,7 @@ function match_plugin(plugin, plugin_name, msg)
       print("msg matches: ", pattern)
 
       if is_plugin_disabled_on_chat(plugin_name, receiver) then
-        return nil
+        return 
       end
       -- Function exists
       if plugin.run then
@@ -324,7 +324,7 @@ function cron_plugins()
 
   for name, plugin in pairs(plugins) do
     -- Only plugins with cron function
-    if plugin.cron ~= nil then
+    if plugin.cron ~= then
       plugin.cron()
     end
   end
