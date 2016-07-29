@@ -24,10 +24,10 @@ local fonts = {'American%20Typewriter%2CBold','Arial%2CBoldItalicMT','Arial%2CBo
 }
 
 local colors = {'00FF00','6699FF','CC99CC','CC66FF','0066FF','000000','CC0066','FF33CC','FF0000','FFCCCC','FF66CC','33FF00','FFFFFF','00FF00'}
-local f = fonts[math.random(#fonts)]
-local c = colors[math.random(#colors)]
+local f = fonts[matches.random(#fonts)]
+local c = colors[matches.random(#colors)]
 
-local url = answers[math.random(#answers)]..jdat.ENtime.."&txtsize=200&txtclr="..c.."&txtalign=middle,center&txtfont="..f.."%20Condensed%20Medium&mono=ff6598cc=?markscale=60&markalign=center%2Cdown&mark64=QFVCX0NICg"
+local url = answers[matches.random(#answers)]..jdat.ENtime.."&txtsize=200&txtclr="..c.."&txtalign=middle,center&txtfont="..f.."%20Condensed%20Medium&mono=ff6598cc=?markscale=60&markalign=center%2Cdown&mark64=QFVCX0NICg"
 local file = download_to_file(url,'time.webp')
 send_document(get_receiver(msg), file, ok_cb, false)
 end
