@@ -13,13 +13,15 @@ local answers = {'https://assets.imgix.net/examples/clouds.jpg?blur=120&w=700&h=
                    'https://assets.imgix.net/unsplash/transport.jpg?blur=120&w=700&h=400&fit=crop&txt=',
                    'https://assets.imgix.net/unsplash/coffee.JPG?blur=120&w=700&h=400&fit=crop&txt=',
                    'https://assets.imgix.net/unsplash/citystreet.jpg?blur=120&w=700&h=400&fit=crop&txt=',
-				   'http://assets.imgix.net/examples/vista.png?blur=120&w=700&h=400&fit=crop&txt='}
+				   'http://assets.imgix.net/examples/vista.png?blur=120&w=700&h=400&fit=crop&txt='
+}
 
 local fonts = {'American%20Typewriter%2CBold','Arial%2CBoldItalicMT','Arial%2CBoldMT','Athelas%2CBold',
                'Baskerville%2CBoldItalic','Charter%2CBoldItalic','DIN%20Alternate%2CBold','Gill%20Sans%2CUltraBold',
 			   'PT%20Sans%2CBold','Seravek%2CBoldItalic','Verdana%2CBold','Yuanti%20SC%2CBold','Avenir%20Next%2CBoldItalic',
 			   'Lucida%20Grande%2CBold','American%20Typewriter%20Condensed%2CBold','rial%20Rounded%20MT%2CBold','Chalkboard%20SE%2CBold',
-			   'Courier%20New%2CBoldItalic','Charter%20Black%2CItalic','American%20Typewriter%20Light'}
+			   'Courier%20New%2CBoldItalic','Charter%20Black%2CItalic','American%20Typewriter%20Light'
+}
 
 local colors = {'00FF00','6699FF','CC99CC','CC66FF','0066FF','000000','CC0066','FF33CC','FF0000','FFCCCC','FF66CC','33FF00','FFFFFF','00FF00'}
 local f = fonts[math.random(#fonts)]
