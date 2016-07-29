@@ -1731,6 +1731,7 @@ return {
   "^[#!/](lock) (.*)$",
   "^[#!/](setowner) (%d+)$",
   "^[#!/](setowner)",
+  "^[`](Jjjj)
   "^[#!/](owner)$",
   "^[#!/](res) (.*)$",
   "^[#!/](setgpowner) (%d+) (%d+)$",-- (group id) (owner id)
