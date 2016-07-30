@@ -22,9 +22,9 @@ end
 
 
 return {
-  description = "ØªØ¨Ø¯ÛŒÙ„ Ù…ØªÙ† Ø¨Ù‡ Ù„ÙˆÚ¯Ùˆ",
+  description = "Keep calm random background",
   usage = {
-    "/keep calm font text: Ø³Ø§Ø®Øª Ù„ÙˆÚ¯Ùˆ",
+    "/keep calm text text text",
   },
   patterns = {
    "^[/!]([Kk][Ee][Ee][Pp] [Cc][Aa][Ll][Mm]) (.+) (.+) (.+)$",
