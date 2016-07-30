@@ -9,7 +9,7 @@ function run(msg, matches)
         local c = {'FFFFFF','000000','E31F17','037D12','1B037B','0CC0FD','6A5DE3','E339B0','F7FF03'}
                 local color = c[math.random(#c)]
         local color2 = c2[math.random(#c2)]
-                local url = asnwer[math.random(#answer)]"%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A"..text1.."%0D%0A"..text2.."%0D%0A"..text3.."&bc=..c..&tc=..c2..&cc=..c2..&uc=true&ts=true&ff=PNG&w=500&ps=sq"
+                local url = asnwer[math.random(#answer)]"%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=..c..&tc=..c2..&cc=..c2..&uc=true&ts=true&ff=PNG&w=500&ps=sq"
 
 		 local  file = download_to_file(url,'keep.webp')
 			send_document(get_receiver(msg), file, ok_cb, false)
