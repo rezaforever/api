@@ -246,16 +246,18 @@ function create_config( )
     "support",
     "text_to_st",
     "help_en",
+    "tosticker",
+    "tophoto",
 	"supergroup",
 	"whitelist",
 	"msg_checks"
     },
     sudo_users = {235707882},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[🎩 ViVo v 0.1 ✅
+    about_text = [[🎩 OmeGa v 2 ✅
 An antisapm lua bot based on Telegram
 Bot Id ✌
-@ViVoTg 
+@OmeGa_Tg 
 Sudo Id 🙇
 @RezaMnk
 Help commands :
@@ -690,7 +692,7 @@ function cron_plugins()
 
   for name, plugin in pairs(plugins) do
     -- Only plugins with cron function
-    if plugin.cron ~=  then
+    if plugin.cron ~= j then
       plugin.cron()
     end
   end
