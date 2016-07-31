@@ -8,7 +8,7 @@ local group_welcome = redis:hget(hash,'welcome')
 if matches[1] == 'delwlc' and not matches[2] and is_owner(msg) then 
     
    redis:hdel(hash,'welcome')
-        return 'Group welcome deleted!'
+        return 'Group wlc deleted'
 end
 
 local url , res = http.request('http://api.gpmod.ir/time/')
@@ -17,20 +17,18 @@ local jdat = json:decode(url)
 
 if matches[1] == 'setwlc' and is_owner(msg) then
 redis:hset(hash,'welcome',matches[2])
-        return 'Group welcome set to : ✋\n'..matches[2]
+        return 'Gp wlc set to : \n'..matches[2]
 end
 
-if matches[1] == 'chat_add_user' or 'chat_add_user_link' or 'channel_invite' and msg.service then
+if matches[1] == 'chat_add_user_link' or 'chat_add_user' or 'channel_invite' and msg.service then
 group_welcome = string.gsub(group_welcome, '{gpname}', msg.to.title)
-group_welcome = string.gsub(group_welcome, '{firstname}', ""..(msg.action.user.first_name or '').."")
- group_welcome = string.gsub(group_welcome, '{lastname}', ""..(msg.action.user.last_name or '').."")
-  group_welcome = string.gsub(group_welcome, '{username}', "@"..(msg.action.user.username or '').."")
-  group_welcome = string.gsub(group_welcome, '{fatime}', ""..(jdat.FAtime).."")
+ group_welcome = string.gsub(group_welcome, '{fatime}', ""..(jdat.FAtime).."")
   group_welcome = string.gsub(group_welcome, '{entime}', ""..(jdat.ENtime).."")
   group_welcome = string.gsub(group_welcome, '{fadate}', ""..(jdat.FAdate).."")
   group_welcome = string.gsub(group_welcome, '{endate}', ""..(jdat.ENdate).."")
   group_welcome = string.gsub(group_welcome, '{rules}', ""..(rules or '').."")
   group_welcome = string.gsub(group_welcome, '{about}', ""..(about or '').."")
+  group_welcome = string.gsub(group_welcome, '{id}', ""..(msg.from.id).."") 
 
 
  end
@@ -42,7 +40,7 @@ return {
   "^[!#/](delwlc)$",
   "^!!tgservice (chat_add_user)$",
   "^!!tgservice (channel_invite)$",
-  "^!!tgservice (chat_add_user_link)$",
+  "^!!tgservice (chat_add_user_link)$",  
   },
   run = run
 }
