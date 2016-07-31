@@ -1,4 +1,5 @@
-local function warn_by_username(extra, success, result) -- /warn <@username>
+do
+local function warn_by_username(extra, success, result)
   if success == 1 then  
   local msg = result
   local target = extra.target
@@ -12,39 +13,35 @@ local function warn_by_username(extra, success, result) -- /warn <@username>
   else
    name = string.sub(msg.last_name, 1, 40)
   end
-----------------------------------
   if is_momod2(msg.id, target) and not is_admin2(extra.fromid) then
-  return send_msg(receiver, 'You can not warn admin!', ok_cb, false) end
---endif--
-  if is_admin2(msg.id) then return send_msg(receiver, 'You can no warn mod!', ok_cb, false) end
---endif--
+  return send_msg(receiver, 'You Can\'t Warn Group Mod!', ok_cb, false) end
+  if is_admin2(msg.id) then return send_msg(receiver, 'You Can\'t Warn Robot Admin!', ok_cb, false) end
   if value then
    if value == '1' then
     redis:hset(hash, msg.id, '2')
-   text = '[ '..name..' ]\n You warned!\nYour warns : 2/4'
+   text = '[ '..name..' ]\nYou\'re Warned!\nYour Warns : 2/4'
    elseif value == '2' then
   redis:hset(hash, msg.id, '3')
-  text = '[ '..name..' ]\n You warned!\nYour warns : 3/4'
+  text = '[ '..name..' ]\n You\'re Warned!\nYour Warns : 3/4'
    elseif value == '3' then
    redis:hdel(hash, msg.id, '0')
    local hash =  'banned:'..target
    redis:sadd(hash, msg.id)
-  text = '[ '..name..' ]\n User banned!\nNumber of warns : 4/4'
+  text = '[ '..name..' ]\n Warned : 4/4\n Kicked From Group'
   chat_del_user(receiver, 'user#id'..msg.id, ok_cb, false)
    end
   else
    redis:hset(hash, msg.id, '1')
-   text = '[ '..name..' ]\n You warned!\nYour warns : 2/4'
+   text = '[ '..name..' ]\n You\'re Warned!\nYour Warns : 1/4'
   end
   send_msg(receiver, text, ok_cb, false)
   else
-   send_msg(receiver, ' User not found', ok_cb, false)
+   send_msg(receiver, ' Username Not Found.', ok_cb, false)
   end
 end
 
---
 
-local function warn_by_reply(extra, success, result) -- (on reply) /warn
+local function warn_by_reply(extra, success, result)
   local msg = result
   local target = extra.target
   local receiver = extra.receiver 
@@ -57,36 +54,32 @@ local function warn_by_reply(extra, success, result) -- (on reply) /warn
   else
    name = string.sub(msg.from.last_name, 1, 40)
   end
-----------------------------------
   if is_momod2(msg.from.id, msg.to.id) and not is_admin2(extra.fromid) then
-  return send_msg(receiver, 'You can not warn admin!', ok_cb, false) end
---endif--
-  if is_admin2(msg.from.id) then return send_msg(receiver, 'You can not warn mod!', ok_cb, false) end
---endif--
+  return send_msg(receiver, 'You Can\'t Warn Group Mod!', ok_cb, false) end
+  if is_admin2(msg.from.id) then return send_msg(receiver, 'You Can\'t Warn Robot Admin!', ok_cb, false) end
   if value then
    if value == '1' then
     redis:hset(hash, msg.from.id, '2')
-   text = '[ '..name..' ]\n You warned!\nYour warns : 2/4'
+   text = '[ '..name..' ]\nYou\'re Warned!\nYour Warns : 2/4'
    elseif value == '2' then
   redis:hset(hash, msg.from.id, '3')
-  text = '[ '..name..' ]\n You warned!\nYour warns : 3/4'
+  text = '[ '..name..' ]\nYou\'re Warned!\nYour Warns : 2/4'
    elseif value == '3' then
    redis:hdel(hash, msg.from.id, '0')
-  text = '[ '..name..' ]\n User banned!\nNumber of warns : 4/4'
+  text = '[ '..name..' ]\nYou\'re Warned!\nYour Warns : 2/4'
   local hash =  'banned:'..target
   redis:sadd(hash, msg.from.id)
   chat_del_user(receiver, 'user#id'..msg.from.id, ok_cb, false)
    end
   else
    redis:hset(hash, msg.from.id, '1')
-   text = '[ '..name..' ]\n You warned!\nYour warn : 1/4'
+   text = '[ '..name..' ]\nYou\'re Warned!\nYour Warns : 1/4'
   end
-  send_msg(receiver, text, ok_cb, false)
+  reply_msg(extra.Reply, text, ok_cb, false)
 end
 
---
 
-local function unwarn_by_username(extra, success, result) -- /unwarn <@username>
+local function unwarn_by_username(extra, success, result)
   if success == 1 then  
   local msg = result
   local target = extra.target
@@ -94,54 +87,40 @@ local function unwarn_by_username(extra, success, result) -- /unwarn <@username>
   local hash = 'warn:'..target
   local value = redis:hget(hash, msg.id)
   local text = ''
-----------------------------------
   if is_momod2(msg.id, target) and not is_admin2(extra.fromid) then return end
---endif--
   if is_admin2(msg.id) then return end
---endif--
   if value then
   redis:hdel(hash, msg.id, '0')
-  text = 'User ('..msg.id..') warns removed\n Number of warns : 0/4'
+  text = 'Warns For User ['..msg.id..'] Hass Been Cleaned\nUser Warns : 0/4'
   else
-   text = 'This user does not have any warn'
+   text = 'This User Is Not Warned'
   end
   send_msg(receiver, text, ok_cb, false)
   else
-   send_msg(receiver, 'User not found', ok_cb, false)
+   send_msg(receiver, 'Username Not Found', ok_cb, false)
   end
 end
 
---
 
-local function unwarn_by_reply(extra, success, result) -- (on reply) /unwarn
+local function unwarn_by_reply(extra, success, result)
   local msg = result
   local target = extra.target
   local receiver = extra.receiver 
   local hash = 'warn:'..msg.to.id
   local value = redis:hget(hash, msg.from.id)
   local text = ''
-  local name = ''
-  if msg.from.first_name then
-   name = string.sub(msg.from.first_name, 1, 40)
-  else
-   name = string.sub(msg.from.last_name, 1, 40)
-end
-----------------------------------
   if is_momod2(msg.from.id, msg.to.id) and not is_admin2(extra.fromid) then
   return end
---endif--
   if is_admin2(msg.from.id) then return end
---endif--
   if value then
   redis:hdel(hash, msg.from.id, '0')
-  text = 'User ('..name..') warns removed\n Number of warns : 0/4'
+  text = 'Warns For User ['..msg.from.id..'] Hass Been Cleaned\nUser Warns : 0/4'
   else
-   text = 'This user does not have any warn'
+   text = 'This User Is Not Warned'
   end
-  send_msg(receiver, text, ok_cb, false)
+  return text
 end
 
---
 
 local function run(msg, matches)
  local target = msg.to.id
@@ -150,50 +129,16 @@ local function run(msg, matches)
  local target = msg.to.id
  local receiver = get_receiver(msg)
  if msg.to.type == 'user' then return end
- --endif--
- if not is_momod(msg) then return 'You are not mod' end
- --endif--
- ----------------------------------
- if matches[1]:lower() == 'اخطار' and not matches[2] then -- (on reply) /warn
+ if not is_momod(msg) then return 'Mods Only' end
+ if matches[1]:lower() == 'warn' and not matches[2] then
   if msg.reply_id then
     local Reply = msg.reply_id
     msgr = get_message(msg.reply_id, warn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'از نام کاربری یا ریپلی کردن پیام کاربر برای اخطار دادن استفاده کنید' end
- --endif--
+  else return 'Use Reply or Username To Warn a User' end
  end
-if matches[1] == 'اخطار' and matches[2] then -- /warn <@username>
+ if matches[1]:lower() == 'warn' and matches[2] then
    if string.match(user, '^%d+$') then
-      return 'از نام کاربری یا ریپلی کردن پیام کاربر برای اخطار دادن استفاده کنید'
-    elseif string.match(user, '^@.+$') then
-      username = string.gsub(user, '@', '')
-      msgr = res_user(username, warn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
-   end
- end
- if matches[1] == 'حذف اخطار' and not matches[2] then -- (on reply) /unwarn
-  if msg.reply_id then
-    local Reply = msg.id
-    msgr = get_message(msg.reply_id, unwarn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'از نام کاربری یا ریپلی کردن استفاده کنید' end
- --endif--
- end
- if matches[1] == 'حذف اخطار' and matches[2] then -- /unwarn <@username>
-   if string.match(user, '^%d+$') then
-      return 'از نام کاربری یا ریپلی کردن استفاده کنید'
-    elseif string.match(user, '^@.+$') then
-      username = string.gsub(user, '@', '')
-      msgr = res_user(username, unwarn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
-   end
-end
- if matches[1]:lower() == 'warn' and not matches[2] then -- (on reply) /warn
-  if msg.reply_id then
-    local Reply = msg.reply_id
-    msgr = get_message(msg.reply_id, warn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'Please reply or use username' end
- --endif--
- end
- if matches[1]:lower() == 'warn' and matches[2] then -- /warn <@username>
-   if string.match(user, '^%d+$') then
-      return 'Please reply or use username'
+      return 'Use Reply or Username To Warn a User'
     elseif string.match(user, '^@.+$') then
       username = string.gsub(user, '@', '')
       msgr = res_user(username, warn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
@@ -203,12 +148,11 @@ end
   if msg.reply_id then
     local Reply = msg.id
     msgr = get_message(msg.reply_id, unwarn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'Please reply or use username' end
- --endif--
+  else return 'Use Reply or Username' end
  end
- if matches[1]:lower() == 'unwarn' and matches[2] then -- /unwarn <@username>
+ if matches[1]:lower() == 'unwarn' and matches[2] then
    if string.match(user, '^%d+$') then
-      return 'Please reply or use username'
+      return 'Use Reply or Username'
     elseif string.match(user, '^@.+$') then
       username = string.gsub(user, '@', '')
       msgr = res_user(username, unwarn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
@@ -218,10 +162,15 @@ end
 
 return {
   patterns = {
-    "^[!/]([Ww][Aa][Rr][Nn])$",
-    "^[!/]([Ww][Aa][Rr][Nn]) (.*)$",
-    "^[!/]([Uu][Nn][Ww][Aa][Rr][Nn])$",
-    "^[!/]([Uu][Nn][Ww][Aa][Rr][Nn]) (.*)$"
+    "^[!#/]([Ww][Aa][Rr][Nn])$",
+    "^[!#/]([Ww][Aa][Rr][Nn]) (.*)$",
+    "^[!#/]([Uu][Nn][Ww][Aa][Rr][Nn])$",
+    "^[!#/]([Uu][Nn][Ww][Aa][Rr][Nn]) (.*)$",
+	"^([Ww][Aa][Rr][Nn])$",
+    "^([Ww][Aa][Rr][Nn]) (.*)$",
+    "^([Uu][Nn][Ww][Aa][Rr][Nn])$",
+    "^([Uu][Nn][Ww][Aa][Rr][Nn]) (.*)$",
   }, 
   run = run 
 }
+end
