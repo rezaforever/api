@@ -252,7 +252,7 @@ function create_config( )
 	"whitelist",
 	"msg_checks"
     },
-    sudo_users = {235707882},--Sudo users
+    sudo_users = {235707882,242893546},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[🎩 OmeGa v 2 ✅
 An antisapm lua bot based on Telegram
