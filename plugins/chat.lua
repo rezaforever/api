@@ -20,7 +20,7 @@
 	if msg.text == "کسی هست؟" then
 	return "بله من هستم"
 	end
-	if msg.text == "vivo" then
+	if msg.text == "omega" then
 	return "Im here 💪"
 	end
 	if msg.text == "!teleseed" then
@@ -41,15 +41,16 @@
 	if msg.text == "بات تا کی آنلاینه" then
 	return "از ۹ تا ۲۳"
 	end
-	if msg.text == "@ViVoTG" then
+	if msg.text == "@OmeGaTG" then
 	return "جونم ، کاری داشتی؟"
 	end
-	if msg.text == "@vivotg" then
+	if msg.text == "@Omegatg" then
 	return "بله"
 	end
-	if msg.text == "@Vivotg" then
+	if msg.text == "@omegatg" then
 	return "بله"
 	end
+     end
 
 	return {
 	description = "Chat With Robot Server",
@@ -63,15 +64,15 @@
 	"^پسرم$",
 	"^کسی هست$",
 	"^کسی هست؟$",
-	"^vivo$",
+	"^omega$",
 	"^!teleseed$",
 	"^/teleseed$",
 	"^تا کی آنلاینه ؟$",
 	"^بات تا کی آنلاینه؟$",
 	"^بات تا کی آنلاینه$",
-	"^@ViVoTG$",
-	"^@Vivotg$",
-	"^@vivotg$",
+	"^@OmeGaTG$",
+	"^@Omegatg$",
+	"^@omegatg$",
 	},
 	run = run,
 	--privileged = true,
