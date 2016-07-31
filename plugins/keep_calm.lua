@@ -18,7 +18,7 @@ function run(msg, matches)
           'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=F7FF03&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq'
         
 }
-        local ans = answer[math.random(#answer)]
+        local url = answer[math.random(#answer)]
 
                        local  file = download_to_file(url,'keep.webp')
 			send_document(get_receiver(msg), file, ok_cb, false)
