@@ -52,10 +52,10 @@ end
 
 function msg_valid(msg)
   -- Don't process outgoing messages
-  if msg.out then
-    print('\27[36mNot valid: msg from us\27[39m')
-    return false
-  end
+  --if msg.out then
+    --print('\27[36mNot valid: msg from us\27[39m')
+    --return false
+  --end
 
   -- Before bot was started
   if msg.date < os.time() - 5 then
@@ -78,10 +78,10 @@ function msg_valid(msg)
     return false
   end
 
-  if msg.from.id == our_id then
-    print('\27[36mNot valid: Msg from our id\27[39m')
-    return false
-  end
+  --if msg.from.id == our_id then
+    --print('\27[36mNot valid: Msg from our id\27[39m')
+    --return false
+  --end
 
   if msg.to.type == 'encr_chat' then
     print('\27[36mNot valid: Encrypted chat\27[39m')
@@ -160,7 +160,7 @@ function match_plugin(plugin, plugin_name, msg)
       print("msg matches: ", pattern)
 
       if is_plugin_disabled_on_chat(plugin_name, receiver) then
-        return 
+        return nil
       end
       -- Function exists
       if plugin.run then
@@ -692,7 +692,7 @@ function cron_plugins()
 
   for name, plugin in pairs(plugins) do
     -- Only plugins with cron function
-    if plugin.cron ~= j then
+    if plugin.cron ~= nil then
       plugin.cron()
     end
   end
