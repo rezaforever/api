@@ -257,7 +257,7 @@ function create_config( )
     about_text = [[🎩 OmeGa v 2 ✅
 An antisapm lua bot based on Telegram
 Bot Id ✌
-@OmeGa_Tg 
+@OmeGaTg
 Sudo Id 🙇
 @RezaMnk
 Help commands :
