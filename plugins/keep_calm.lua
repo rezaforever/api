@@ -6,8 +6,20 @@ function run(msg, matches)
                 local color2 = {'ffffff','000000'}
         local c = color[math.random(#color)]
                 local c2 = color2[math.random(#color2)]
-        local u = "http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A"..text1.."%0D%0A"..text2.."%0D%0A"..text3.."&bc="
-        local url = u[math.random(#u)]'"..c.."&tc="..c2.."&cc="..c2.."&uc=true&ts=true&ff=PNG&w=500&ps=sq'
+        local answer = {
+        'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=ffffff&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A"..text1.."%0D%0A..text2..%0D%0A..text3..&bc=000000&tc=ffffff&cc=ffffff&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=E31F17&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=037D12&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=1B037B&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=0CC0FD&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=6A5DE3&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+         'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=E339B0&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq',
+          'http://www.keepcalmstudio.com/-/p.php?t=%EE%BB%AA%0D%0AKEEP%0D%0ACALM%0D%0A..text1..%0D%0A..text2..%0D%0A..text3..&bc=F7FF03&tc=000000&cc=000000&uc=true&ts=true&ff=PNG&w=500&ps=sq'
+        
+}
+        local ans = answer[math.random(#answer)]
+
                        local  file = download_to_file(url,'keep.webp')
 			send_document(get_receiver(msg), file, ok_cb, false)
 
