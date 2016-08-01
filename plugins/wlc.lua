@@ -22,7 +22,10 @@ end
 
 if matches[1] == 'chat_add_user_link' or 'chat_add_user' or 'channel_invite' and msg.service then
 group_welcome = string.gsub(group_welcome, '{gpname}', msg.to.title)
- group_welcome = string.gsub(group_welcome, '{fatime}', ""..(jdat.FAtime).."")
+ group_welcome = string.gsub(group_welcome, '{firstname}', ""..(msg.action.user.first_name or '').."")
+  group_welcome = string.gsub(group_welcome, '{lastname}', ""..(msg.action.user.last_name or '').."")
+  group_welcome = string.gsub(group_welcome, '{username}', "@"..(msg.action.user.username or '').."")
+  group_welcome = string.gsub(group_welcome, '{fatime}', ""..(jdat.FAtime).."")
   group_welcome = string.gsub(group_welcome, '{entime}', ""..(jdat.ENtime).."")
   group_welcome = string.gsub(group_welcome, '{fadate}', ""..(jdat.FAdate).."")
   group_welcome = string.gsub(group_welcome, '{endate}', ""..(jdat.ENdate).."")
