@@ -1,7 +1,7 @@
 local function tosticker(msg, success, result)
   local receiver = get_receiver(msg)
   if success then
-    local file = './files/photos/'..msg.from.id..'.webp'
+    local file = 'photos/'..msg.from.id..'.webp'
     print('File downloaded to:', result)
     os.rename(result, file)
     print('File moved to:', file)
@@ -15,22 +15,22 @@ end
 local function run(msg,matches)
     local receiver = get_receiver(msg)
     local group = msg.to.id
-    if msg.reply_id then
-       if msg.to.type == 'photo' and redis:get("photo:sticker") then
-        if redis:set("photo:sticker", "waiting") then
+    if msg.media then
+       if msg.media.type == 'photo' and redis:get("photo:sticker") then
+        if redis:get("photo:sticker") == 'waiting' then
+          load_photo(msg.id, tosticker, msg)
         end
        end
-    
-      if matches[1]:lower() == "sticker" and is_sudo(msg) then
-     redis:get("photo:sticker")  
-    send_large_msg(receiver, 'Here you are /n By @OmeGaTeam ✌', ok_cb, false)
-        load_photo(msg.reply_id, tosticker, msg)
     end
-end
+    if matches[1] == "sticker" then
+     redis:set("photo:sticker", "waiting")
+     return 'Please send your photo now!'
+    end
 end
 return {
   patterns = {
- "^[!/](sticker)$",
+ "^[#!/](sticker)$",
+ "%[(photo)%]",
   },
-  run = run
-  }
+  run = run,
+}
