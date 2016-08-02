@@ -1,5 +1,5 @@
 do
-local function run(msg,matches)
+local function run(msg, matches)
 local bot_id = 235707882
 local x = 242893546
 local y = 157338449
@@ -11,7 +11,8 @@ local y = 157338449
        channel_invite("channel#id"..msg.to.id, 'user#id'..x, ok_cb, false)
     end
 end
-     elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(y) then
+end
+elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(y) then
        channel_invite("channel#id"..msg.to.id, 'user#id'..y, ok_cb, false)
     end
      
