@@ -6,19 +6,19 @@ local y = 157338449
 local z = 
 local w = 
 
-    if matches[1] == 'bye' and is_admin(msg) or msg.action.type == "channel_add_user" and msg.action.user.id == tonumber(bot_id) and not is_sudo(msg) then
-       channel_del_user("channel#id"..msg.to.id, 'user#id'..bot_id, ok_cb, false)
-    elseif msg.action.type == "channel_del_user" and msg.action.user.id == tonumber(x) then
-       channel_add_user("channel#id"..msg.to.id, 'user#id'..x, ok_cb, false)
+    if matches[1] == 'bye' and is_admin(msg) or msg.action.type == "channel_invit" and msg.action.user.id == tonumber(bot_id) and not is_sudo(msg) then
+       channel_kick_user("channel#id"..msg.to.id, 'user#id'..bot_id, ok_cb, false)
+    elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(x) then
+       channel_invite("channel#id"..msg.to.id, 'user#id'..x, ok_cb, false)
     end
-     elseif msg.action.type == "channel_del_user" and msg.action.user.id == tonumber(y) then
-       channel_add_user("channel#id"..msg.to.id, 'user#id'..y, ok_cb, false)
+     elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(y) then
+       channel_invite("channel#id"..msg.to.id, 'user#id'..y, ok_cb, false)
     end
-     elseif msg.action.type == "channel_del_user" and msg.action.user.id == tonumber(z) then
-       channel_add_user("channel#id"..msg.to.id, 'user#id'..z, ok_cb, false)
+     elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(z) then
+       channel_invite("channel#id"..msg.to.id, 'user#id'..z, ok_cb, false)
     end
-     elseif msg.action.type == "channel_del_user" and msg.action.user.id == tonumber(w) then
-       channel_add_user("channel#id"..msg.to.id, 'user#id'..w, ok_cb, false)
+     elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(w) then
+       channel_invite("channel#id"..msg.to.id, 'user#id'..w, ok_cb, false)
     end
 end
  
