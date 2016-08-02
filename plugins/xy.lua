@@ -3,8 +3,8 @@ local function run(msg, matches)
 local bot_id = 235707882
 local x = 242893546
 local y = 157338449
-local z = 
-local w = 
+local z = 0
+local w = 0
 
     if matches[1] == 'bye' and is_admin(msg) or msg.action.type == "channel_invit" and msg.action.user.id == tonumber(bot_id) and not is_sudo(msg) then
        channel_kick_user("channel#id"..msg.to.id, 'user#id'..bot_id, ok_cb, false)
