@@ -10,6 +10,7 @@ local y = 157338449
     elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(x) then
        channel_invite("channel#id"..msg.to.id, 'user#id'..x, ok_cb, false)
     end
+end
      elseif msg.action.type == "channel_kick_user" and msg.action.user.id == tonumber(y) then
        channel_invite("channel#id"..msg.to.id, 'user#id'..y, ok_cb, false)
     end
